@@ -1,5 +1,6 @@
 @import "library";
 @import "reset";
+@import "compass/css3/transition";
 
 // Global templates
 
@@ -17,11 +18,48 @@
 // Global tags
 
 body {
-    background: pink;
+    // background: pink;
 }
 
 a {
     color: #800000;
 }
 
+img {
+    max-width: 100%;
+}
+
 // Everything else
+
+.wrap {
+    @extend %container;
+}
+
+ul {
+    float: left;
+
+    li {
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+        img {
+            display: block;
+            position: absolute;
+            // width: 100%;
+            left: 0;
+            @include transition(left 300ms ease-out);
+        }
+
+        &:hover {
+            img {
+                left: -90%;
+            }
+        }
+    }
+
+    &.first, &.last {
+        margin-top: 100px;
+    }
+}
